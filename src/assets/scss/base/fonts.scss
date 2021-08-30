@@ -1,0 +1,118 @@
+$font_path_ko: '~@/assets/fonts/spoqa-han-sans/';
+@font-face {
+  font-family: 'Spoqa Han Sans';
+  font-weight: 700;
+  src: local('Spoqa Han Sans Bold'),
+  url('#{$font_path_ko}SpoqaHanSansBold.woff2') format('woff2'),
+  url('#{$font_path_ko}SpoqaHanSansBold.woff') format('woff'),
+  url('#{$font_path_ko}SpoqaHanSansBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans';
+  font-weight: 400;
+  src: local('Spoqa Han Sans Regular'),
+  url('#{$font_path_ko}SpoqaHanSansRegular.woff2') format('woff2'),
+  url('#{$font_path_ko}SpoqaHanSansRegular.woff') format('woff'),
+  url('#{$font_path_ko}SpoqaHanSansRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans';
+  font-weight: 300;
+  src: local('Spoqa Han Sans Light'),
+  url('#{$font_path_ko}SpoqaHanSansLight.woff2') format('woff2'),
+  url('#{$font_path_ko}SpoqaHanSansLight.woff') format('woff'),
+  url('#{$font_path_ko}SpoqaHanSansLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans';
+  font-weight: 100;
+  src: local('Spoqa Han Sans Thin'),
+  url('#{$font_path_ko}SpoqaHanSansThin.woff2') format('woff2'),
+  url('#{$font_path_ko}SpoqaHanSansThin.woff') format('woff'),
+  url('#{$font_path_ko}SpoqaHanSansThin.ttf') format('truetype');
+}
+
+$font_path_en: '~@/assets/fonts/brown/';
+@font-face {
+  font-family: 'Brown LL';
+  font-weight: 700;
+  src: local('Brown LL Bold'),
+  url('#{$font_path_en}BrownLL-Bold.otf') format('opentype'),
+  url('#{$font_path_en}BrownLL-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Brown LL';
+  font-weight: 500;
+  src: local('Brown LL Medium'),
+  url('#{$font_path_en}BrownLL-Medium.otf') format('opentype'),
+  url('#{$font_path_en}BrownLL-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Brown LL';
+  font-weight: 400;
+  src: local('Brown LL Regular'),
+  url('#{$font_path_en}BrownLL-Regular.otf') format('opentype'),
+  url('#{$font_path_en}BrownLL-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Brown LL';
+  font-weight: 300;
+  src: local('Brown LL Light'),
+  url('#{$font_path_en}BrownLL-Light.otf') format('opentype'),
+  url('#{$font_path_en}BrownLL-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Brown LL';
+  font-weight: 100;
+  src: local('Brown LL Thin'),
+  url('#{$font_path_en}BrownLL-Thin.otf') format('opentype'),
+  url('#{$font_path_en}BrownLL-Thin.woff') format('woff');
+}
+
+$font_en: 'Brown LL';
+$font_ko: 'Spoqa Han Sans';
+@mixin font($family: $font_ko, $size: 14px, $weight: 400, $spacing: -0.5px) {
+  font: {
+    family: $family;
+    size: $size;
+    weight: $weight;
+  }
+  letter-spacing: $spacing;
+}
+
+@mixin font_en($size: 14px, $weight: 400) {
+  @include font($font_en, $size, $weight);
+  letter-spacing: -0.1px;
+
+  @if $size == 14px {
+    line-height: 1.29;
+  } @else if $size == 16px {
+    line-height: 1.38;
+  } @else if $size == 20px {
+    line-height: 1.2;
+  } @else if $size == 24px {
+    line-height: 1.38;
+  } @else if $size == 34px {
+    line-height: 1.21;
+  } @else {
+    @error "Unknown #{$size}.";
+  }
+}
+
+@mixin font_ko($size: 14px, $weight: 400) {
+  @include font($font_ko, $size, $weight);
+  @if $size == 15px {
+    line-height: 1.53;
+  } @else if $size == 30px {
+    line-height: 1.37;
+  } @else {
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,32 @@
+@import '~@/assets/scss/base/fonts';
+@import '~@/assets/scss/base/color';
+
+.bbosong-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+// header
+.bbosong-header {
+  flex-grow: 0;
+  text-align: center;
+}
+
+// contents
+.bbosong-contents {
+  flex-grow: 1;
+}
+
+// footer
+.bbosong-footer {
+  flex-grow: 0;
+  padding: 20px 0 40px;
+  color: $grey-03;
+  text-align: center;
+  @include font_ko(14px, 400);
+  border-top: 1px solid $grey-05;
+  background-color: $white;
+}
