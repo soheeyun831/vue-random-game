@@ -1,5 +1,35 @@
 <template>
   <div>
+    <div class="game-setting-form-container">
+      <ul class="game-setting-form">
+        <li class="game-setting-form-item">
+          <div class="game-setting-form-item-title on" aria-label="1">
+            <h5>step 1. 참가인원</h5>
+          </div>
+          <div class="game-setting-form-item-contents">
+
+          </div>
+        </li>
+        <li class="game-setting-form-item">
+          <div class="game-setting-form-item-title" aria-label="2">
+            <h5>step 2. 당첨상품</h5>
+          </div>
+          <div class="game-setting-form-item-contents">
+
+          </div>
+        </li>
+        <li class="game-setting-form-item">
+          <div class="game-setting-form-item-title" aria-label="3">
+            <h5>step 3. 이용게임</h5>
+          </div>
+          <div class="game-setting-form-item-contents">
+
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
     <div>
       <h3>참가인원은 아래와 같습니까?</h3>
       <ul>
@@ -96,7 +126,6 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
+<style lang="scss" scoped>
+@import '~@/assets/scss/setting.scss';
 </style>
