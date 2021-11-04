@@ -16,6 +16,7 @@
     border-radius: 16px;
     background-color: $white;
     .game-setting-form-item {
+      padding-bottom: 30px;
       .game-setting-form-item-title {
         height: 40px;
         position: relative;
@@ -45,19 +46,101 @@
         &.on {
           &:before {
             color: $white;
-            border: 2px solid $point3;
-            background-color: $point3;
+            border: 2px solid $point1;
+            background-color: $point1;
           }
 
           h5 {
-            color: $point3;
+            color: $point1;
             @include font_ko(16px, 700);
             line-height: 40px;
           }
         }
       }
       .game-setting-form-item-contents {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        padding-left: 56px;
+        box-sizing: border-box;
+        transition: max-height 300ms;
+      }
+      &.on {
+        .game-setting-form-item-title {
+          &:before {
+            color: $white;
+            border: 2px solid $point1;
+            background-color: $point1;
+          }
+
+          h5 {
+            color: $point1;
+            @include font_ko(16px, 700);
+            line-height: 40px;
+          }
+        }
+
+        .game-setting-form-item-contents {
+          max-height: 600px;
+          transition: max-height 300ms;
+        }
       }
     }
+    .control-group {
+      width: 100%;
+      padding-top: 20px;
+      text-align: center;
+      button {
+        width: 92px;
+        height: 50px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        &.prev-button {
+          margin-right: 8px;
+          color: $point1;
+          border: 1px solid $point1;
+          background: $white;
+        }
+        &.next-button {
+          color: $white;
+          border: transparent;
+          background: $point1;
+        }
+      }
+    }
+  }
+}
+
+.add-group {
+  display: flex;
+  padding: 10px 0 0;
+
+  input {
+    width: calc(100% - 72px);
+    max-width: 300px;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 16px;
+    border: 1px solid $grey-05;
+    border-radius: 6px;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: none;
+    transition: border 300ms;
+    &:focus {
+      border-color: $point1;
+      transition: border 300ms;
+    }
+  }
+  .add-button {
+    width: 68px;
+    height: 44px;
+    margin-left: 4px;
+    color: $white;
+    border: transparent;
+    border-radius: 6px;
+    background: $point1;
+    cursor: pointer;
   }
 }

@@ -1,6 +1,6 @@
 <template>
 <header class="bbosong-header">
-  <h1>커피내기 랜덤게임~</h1>
+  <h1>랜덤 내기</h1>
 </header>
 </template>
 

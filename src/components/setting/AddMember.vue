@@ -1,43 +1,43 @@
 <template>
-  <div>
+  <div class="add-group">
     <input ref="name_input"
            v-model="new_member_name"
            placeholder="추가하실 분의 성함을 알려주세요.">
     <button
-        @click="addMember">
-      add
+        @click="addMember"
+        class="add-button">
+      추가
     </button>
   </div>
 </template>
 
 <script>
-import {ref} from 'vue';
+import {computed, ref} from 'vue';
 import {useStore} from 'vuex';
 
 export default {
   name: "AddMember",
-  props: {
-    members: Array
-  },
-  setup(props) {
+  setup() {
     const store = useStore();
+    const members = computed(() => store.state.member);
+
     const name_input = ref(null);
     let new_member_name = ref('');
 
     const validate = () => {
       const valid = {
-        state : true,
-        message : ''
+        state: true,
+        message: ''
       }
 
-      const overlap = props.members.some( val => {
+      const overlap = members.value.some(val => {
         return val.name === new_member_name.value
       });
 
       if (new_member_name.value === '') {
         valid.state = false;
         valid.message = '추가하실 분의 성함을 알려주세요.'
-      } else if(overlap) {
+      } else if (overlap) {
         valid.state = false;
         valid.message = '동일한 이름이 있습니다. 확인해주세요.'
       }
@@ -66,6 +66,6 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+@import '~@/assets/scss/setting.scss';
 </style>

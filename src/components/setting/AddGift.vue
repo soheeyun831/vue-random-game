@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="add-group">
     <input ref="name_input"
            v-model="new_gift_name"
            placeholder="추가하실 상품을 알려주세요.">
     <button
-        @click="addGift">
-      add
+        @click="addGift"
+        class="add-button">
+      추가
     </button>
   </div>
 </template>
@@ -66,6 +67,6 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+@import '~@/assets/scss/setting.scss';
 </style>

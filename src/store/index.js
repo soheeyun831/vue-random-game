@@ -4,9 +4,18 @@ export default createStore({
     state: {
         member: [
             {no: 1, name: '윤소희'},
-            {no: 2, name: '조재용'},
-            {no: 3, name: '이민해'},
-            {no: 4, name: '차의현'},
+            {no: 2, name: '한예은'},
+            {no: 3, name: '김단비'},
+            {no: 4, name: '권지영'},
+            {no: 5, name: '박수현'},
+            {no: 6, name: '정다님'},
+            {no: 7, name: '임정규'},
+            {no: 8, name: '차의현'},
+            {no: 9, name: '최강우'},
+            {no: 10, name: '이경준'},
+            {no: 11, name: '유용덕'},
+            {no: 12, name: '김성원'},
+            {no: 13, name: '양경석'},
         ],
         gift: [
             {
