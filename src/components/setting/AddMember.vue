@@ -2,6 +2,7 @@
   <div class="add-group">
     <input ref="name_input"
            v-model="new_member_name"
+           @keypress.enter="addMember"
            placeholder="추가하실 분의 성함을 알려주세요.">
     <button
         @click="addMember"

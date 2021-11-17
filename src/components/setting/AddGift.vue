@@ -2,6 +2,7 @@
   <div class="add-group">
     <input ref="name_input"
            v-model="new_gift_name"
+           @keypress.enter="addGift"
            placeholder="추가하실 상품을 알려주세요.">
     <button
         @click="addGift"

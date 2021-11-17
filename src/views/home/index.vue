@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <div
-        class="game-setting-form-container">
+  <section class="game-setting-form-container">
+    <article
+        class="game-setting-form-box">
+      <Header title="🎯 랜덤 내기 🎰"/>
       <ul class="game-setting-form">
         <li class="game-setting-form-item"
             :class="{on : state.state >= 1}">
@@ -22,6 +23,7 @@
                 {{ mem.name }}
                 <button
                     @click="deleteMember(mem.no)"
+                    v-show="state.state === 1"
                     class="delete-button">
                   <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -75,6 +77,7 @@
                     class="count-control">
                   <button
                       @click="updateGiftCount(gift, -1)"
+                      v-if="state.state === 2"
                       class="control-button minus">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -98,10 +101,13 @@
                     </svg>
                   </button>
                   <span>
-                  {{ gift.count }}
+                  {{
+                      state.state === 2 ? gift.count : `${gift.count}개`
+                    }}
                 </span>
                   <button
                       @click="updateGiftCount(gift, 1)"
+                      v-show="state.state === 2"
                       class="control-button plus">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -132,6 +138,7 @@
                 </div>
                 <button
                     @click="deleteGift(gift.no)"
+                    v-show="state.state === 2"
                     class="delete-button">
 
                   <svg
@@ -191,25 +198,29 @@
         <li class="control-group">
           <div>
             <button class="prev-button"
-                    v-show="state.state"
+                    v-show="state.state > 1"
                     @click="moveState(-1)">
               이전
             </button>
             <button class="next-button"
                     @click="moveState(1)">
-              다음
+              {{
+                state.state === 3 ? '내기 시작!' : '다음'
+              }}
             </button>
           </div>
         </li>
       </ul>
-    </div>
-  </div>
+    </article>
+  </section>
 </template>
 
 <script>
 import {computed, reactive} from 'vue';
 import {useStore} from 'vuex';
 import {useRouter} from 'vue-router';
+import Header
+  from "@/components/layout/Header";
 import AddMember
   from '@/components/setting/AddMember'
 import AddGift
@@ -217,7 +228,7 @@ import AddGift
 
 export default {
   name: "index",
-  components: {AddMember, AddGift},
+  components: {Header, AddMember, AddGift},
   setup() {
     const store = useStore();
     const router = useRouter();
@@ -255,8 +266,28 @@ export default {
 
     const moveState = (count) => {
       if (count > 0) {
-        if (state.state < 3) {
-          state.state++
+        if (state.state === 1) {
+          if(members.value.length > 0) {
+            state.state++
+          } else {
+            alert('참여자가 최소 1명 이상이어야 합니다.')
+          }
+        } else if (state.state === 2) {
+          if(gifts.value.length > 0) {
+            let total_count = 0;
+            for(let i = 0; i < gifts.value.length; i++) {
+              total_count += gifts.value[i].count
+            }
+            if(total_count > members.value.length) {
+              alert('상품이 참여자보다 많을 수 없습니다.')
+            } else {
+              state.state++
+            }
+          } else {
+            alert('상품이 최소 1개 이상이어야 합니다.')
+          }
+        } else if (state.state === 3) {
+          router.push(`/${state.game}`);
         }
       } else if (state.state > 1) {
         state.state--
@@ -282,7 +313,7 @@ export default {
 @import '~@/assets/scss/base/color.scss';
 
 .member-total-count {
-  padding: 20px 0 10px;
+  padding: 6px 0 10px;
   color: $grey-02;
   font-size: 14px;
 }
@@ -292,7 +323,7 @@ export default {
   flex-wrap: wrap;
 
   .member-item {
-    min-width: 84px;
+    //min-width: 84px;
     display: flex;
     justify-content: space-between;
     padding: 4px 8px;
@@ -302,6 +333,7 @@ export default {
     line-height: 24px;
     border: 1px solid $grey-05;
     border-radius: 16px;
+    transition: width 300ms;
 
 
     &:hover {
@@ -365,24 +397,22 @@ export default {
 
 
     .name {
-      padding: 4px 12px 4px 8px;
+      padding: 4px 4px 4px 8px;
     }
 
     .count-control {
       display: flex;
-
-      > * {
-        margin-right: 4px;
-      }
+      margin-right: 8px;
 
       > span {
-        margin-right: 8px;
+        margin-right: 4px;
         line-height: 30px;
       }
 
       .control-button {
         width: 20px;
         display: flex;
+        margin-left: 8px;
         justify-content: center;
         flex-direction: column;
         padding: 0;
@@ -405,6 +435,10 @@ export default {
               fill: $point1;
             }
           }
+        }
+
+        &.minus {
+          margin-right: 8px;
         }
       }
     }
@@ -464,6 +498,10 @@ export default {
         color: $white;
         background: $point1;
         transition: all 300ms;
+      }
+      &:hover {
+        background-color: $light-point;
+        transition: background-color 300ms;
       }
     }
   }

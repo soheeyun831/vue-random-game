@@ -1,12 +1,25 @@
 <template>
-<header class="bbosong-header">
-  <h1>랜덤 내기</h1>
-</header>
+  <header class="game-header" :style="{color: props.color ? `#${props.color}` : '#c4c4c4'}">
+    <h1>{{ props.title }}</h1>
+  </header>
 </template>
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    color: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props) {
+    return {props};
+  }
 }
 </script>
 <style lang="scss" scoped>
