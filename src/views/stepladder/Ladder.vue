@@ -11,26 +11,26 @@
     </article>
     <article>
       <div ref="ladder_member"
-           id="sadari-start-data"
            class="result-row">
         <ul>
-          <li v-for="member in state.members" :key="member.no">
-            {{member.name}}
+          <li v-for="member in state.members"
+              :key="member.no">
+            {{ member.name }}
           </li>
         </ul>
       </div>
       <div class="result-line-wrapper">
         <canvas ref="ladder_el"
-                id="sadari-line"
+                id="ladder-line"
                 class="result-line"></canvas>
       </div>
       <div ref="ladder_gift"
-           id="sadari-end-data"
            class="result-row">
 
         <ul>
-          <li v-for="gift in state.gifts" :key="gift.no">
-            {{gift.name}}
+          <li v-for="gift in state.gifts"
+              :key="gift.no">
+            {{ gift.name }}
           </li>
         </ul>
       </div>
@@ -135,34 +135,6 @@ export default {
   }
 }
 
-#app-result:after {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 50%;
-  opacity: 0;
-  -webkit-transition: all 500ms;
-  -o-transition: all 500ms;
-  transition: all 500ms;
-  background-color: #fff;
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 71%, rgba(255, 255, 255, 1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(71%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 71%, rgba(255, 255, 255, 1) 100%);
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 71%, rgba(255, 255, 255, 1) 100%);
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 71%, rgba(255, 255, 255, 1) 100%);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 71%, rgba(255, 255, 255, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0);
-  width: 100%;
-  bottom: 75px;
-  z-index: 5;
-  left: 0;
-}
-
-#app-result.__hider:after {
-  opacity: 1;
-  z-index: 20;
-}
-
 .app-page {
   display: none;
 }
@@ -172,52 +144,40 @@ export default {
 }
 
 .result-row {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  position: relative;
-  z-index: 10;
-}
-
-.result-data {
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  -o-flex: 1;
-  flex: 1;
-  position: relative;
-  text-align: center;
-}
-
-.result-data-value {
-  text-align: center;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 50px;
-  display: inline-block;
-  /*	overflow: hidden;*/
-  -webkit-transition: all 350ms;
-  -o-transition: all 350ms;
-  transition: all 350ms;
-  border-radius: 3px;
-  position: relative;
-  z-index: 5;
+  width: calc(100% - 48px);
+  max-width: 800px;
   margin: 0 auto;
+
+  ul {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    position: relative;
+    z-index: 10;
+
+    li {
+      -webkit-flex: 1;
+      -moz-flex: 1;
+      -ms-flex: 1;
+      -o-flex: 1;
+      flex: 1;
+      padding: 10px;
+      position: relative;
+      text-align: center;
+      -webkit-transition: all 350ms;
+      -o-transition: all 350ms;
+      transition: all 350ms;
+    }
+  }
 }
 
 .result-line {
   width: 100%;
   display: block;
   height: auto;
-}
-
-.result-value {
-
+  max-height: 400px;
 }
 
 .result-line-wrapper {

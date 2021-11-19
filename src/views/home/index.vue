@@ -191,6 +191,11 @@
                     :class="{on : state.game === 'roulette'}">
                   룰렛돌리기
                 </button>
+                <button
+                    @click="selectGame('card')"
+                    :class="{on : state.game === 'card'}">
+                  카드뒤집기
+                </button>
               </li>
             </ul>
           </div>
@@ -234,7 +239,7 @@ export default {
     const router = useRouter();
     const state = reactive({
       state: 1,
-      game: 'ladder'
+      game: 'card'
     });
     const members = computed(() => store.state.member);
     const gifts = computed(() => store.state.gift);

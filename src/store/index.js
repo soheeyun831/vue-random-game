@@ -6,8 +6,8 @@ export default createStore({
             {no: 1, name: '윤소희'},
             {no: 2, name: '한예은'},
             {no: 3, name: '김단비'},
-            // {no: 4, name: '권지영'},
-            // {no: 5, name: '박수현'},
+            {no: 4, name: '권지영'},
+            {no: 5, name: '박수현'},
             // {no: 6, name: '정다님'},
             // {no: 7, name: '임정규'},
             // {no: 8, name: '차의현'},
@@ -23,11 +23,11 @@ export default createStore({
                 name: '커피 ☕',
                 count: 1
             },
-            {
-                no: 2,
-                name: '점심 🍱',
-                count: 1
-            }
+            // {
+            //     no: 2,
+            //     name: '점심 🍱',
+            //     count: 1
+            // }
         ]
     },
     getters: {

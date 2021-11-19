@@ -5,6 +5,7 @@ import Layout from '@/views/Layout';
 import Home from '@/views/home';
 import Stepladder from '@/views/stepladder/Ladder.vue';
 import Roulette from '@/views/roulette/Roulette.vue';
+import Card from '@/views/card/Card.vue';
 const routes = [
     {
         path: '/',
@@ -33,6 +34,14 @@ const routes = [
                 component: Roulette,
                 meta: {
                     screenName: 'Roulette',
+                },
+            },
+            {
+                path: '/card',
+                name: 'Card',
+                component: Card,
+                meta: {
+                    screenName: 'Card',
                 },
             }
             ]
