@@ -292,7 +292,21 @@ export default {
             alert('상품이 최소 1개 이상이어야 합니다.')
           }
         } else if (state.state === 3) {
-          router.push(`/${state.game}`);
+
+          if(state.game === 'roulette') {
+            let total_count = 0;
+            for(let i = 0; i < gifts.value.length; i++) {
+              total_count += gifts.value[i].count
+            }
+
+            if(total_count > 1) {
+              alert('룰렛은 오로지 하나의 상품으로만 사용이 가능합니다.')
+            } else {
+              router.push(`/${state.game}`);
+            }
+          } else {
+            router.push(`/${state.game}`);
+          }
         }
       } else if (state.state > 1) {
         state.state--
